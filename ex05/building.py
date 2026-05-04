@@ -3,7 +3,8 @@ import sys
 def main():
 
     if len(sys.argv) == 1:
-        text = input("Please provide a string: ")
+        text = input("What is the text to count?\n")
+        text += '\n'
     else:
         text = sys.argv[1]
 
