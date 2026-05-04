@@ -1,6 +1,11 @@
 import sys
 
 def main():
+    """
+    This program counts characters in a string (Upper, Lower, Digits, Spaces, Punctuation and total number).
+    If no argument is provided, the user is prompted to input an argument to be counted.
+    When the number of arguments is greater than 1, exception throws an AssertionError and exits.
+    """
 
     if len(sys.argv) == 1:
         text = input("What is the text to count?\n")
