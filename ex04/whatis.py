@@ -1,8 +1,11 @@
 import sys
 
+
 def main():
+
     if len(sys.argv) == 1:
         return
+
     if len(sys.argv) > 2:
         raise AssertionError("more than one argument is provided")
 
@@ -16,7 +19,9 @@ def main():
     else:
         print("I'm Odd.")
 
+
 if __name__ == "__main__":
+
     try:
         main()
     except AssertionError as e:

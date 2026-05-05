@@ -1,10 +1,14 @@
 import sys
 
+
 def main():
     """
-    This program counts characters in a string (Upper, Lower, Digits, Spaces, Punctuation and total number).
-    If no argument is provided, the user is prompted to input an argument to be counted.
-    When the number of arguments is greater than 1, exception throws an AssertionError and exits.
+    This program counts characters in a string (Upper, Lower, Digits, Spaces, \
+            Punctuation and total number).
+    If no argument is provided, the user is prompted to input an argument to \
+            be counted.
+    When the number of arguments is greater than 1, exception throws \
+            an AssertionError and exits.
     """
 
     if len(sys.argv) == 1:
@@ -34,10 +38,14 @@ def main():
             count_spaces += 1
         else:
             count_punctuation += 1
-    
-    count_total = count_upper + count_lower + count_punctuation + count_digits + count_spaces
 
-    print(f"The text contains {count_total} characters:\n{count_upper} upper letters\n{count_lower} lower letters\n{count_punctuation} punctuation marks\n{count_spaces} spaces\n{count_digits} digits")
+    count_total = count_upper + count_lower + count_punctuation \
+        + count_digits + count_spaces
+
+    print(f"The text contains {count_total} characters:\n{count_upper} upper \
+            letters\n{count_lower} lower letters\n{count_punctuation} \
+            punctuation marks\n{count_spaces} spaces\n{count_digits} digits")
+
 
 if __name__ == "__main__":
     try:
