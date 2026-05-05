@@ -1,5 +1,5 @@
 import sys
-import ft_filter
+from ft_filter import ft_filter
 
 
 def main():
@@ -10,17 +10,20 @@ def main():
     If the number of arguments is different than 2 or if type is wrong, \
             the program prints an AssertionError.
     """
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 3:
         raise AssertionError("wrong number of arguments. Only 2 allowed.")
 
-    if not isinstance(sys.argv[1], str) or isinstance(sys.argv[2], int):
-        raise AssertionError("wrong type of arguments. First arg \
-                must be a str and second an int.")
-    
-    user_input = sys.argv[1].split()
+    user_input = sys.argv[1]
 
-    result = list(ft_filter(lambda s, n: [word for word in s if len(word) > n]))
-    return result
+    try:
+        n = int(sys.argv[2])
+    except ValueError:
+        raise AssertionError("wrong type of arguments.")
+
+    words = user_input.split()
+
+    result = ft_filter(lambda w: len(w) > n, [word for word in words])
+    print(list(result))
 
 
 if __name__ == "__main__":
