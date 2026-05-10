@@ -63,11 +63,11 @@ def ft_tqdm(lst: range) -> None:
         output = (f'\r{pct_display:3d}%|{bar}| {i}/{total} '
                   f'[{elapsed_str}<{remaining_str}, {speed_str}]')
 
-        os.write(1, output.encode())
+        print(output, end='', flush=True)
 
         yield item
     
-    os.write(1, b"\n")
+    print()
 
 
 def format_time(seconds):
