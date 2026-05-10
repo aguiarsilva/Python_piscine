@@ -19,7 +19,7 @@ def ft_tqdm(lst: range) -> None:
         cols = 80
 
     bar_width = max(10, cols - 40)
-    
+
     # start the timer
     try:
         start = os.clock_gettime(os.CLOCK_MONOTONIC)
