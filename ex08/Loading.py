@@ -22,52 +22,52 @@ def ft_tqdm(lst: range) -> None:
     
     # start the timer
     try:
-        start = os.clock_gettime(os.CLOCK_REALTIME)
+        start = os.clock_gettime(os.CLOCK_MONOTONIC)
     except AttributeError:
         start = os.times()[4]
 
-    for i, item in enumerate(lst, 1):
-        percentage = i / total
-        pct_display = int(percentage * 100)
+    try:
+        for i, item in enumerate(lst, 1):
+            yield item
 
-        # calculate time executing activity
-        try:
-            now = os.clock_gettime(os.CLOCK_REALTIME)
-        except AttributeError:
-            now = os.times()[4]
-        elapsed_time = now - start
+            percentage = i / total
+            pct_display = int(percentage * 100)
 
-        # calculate the speed and the remaining time for the activity
-        if elapsed_time > 0:
-            speed = i / elapsed_time
-            remaining_time = (total - i) / speed
-        else:
-            speed = 0.0
-            remaining_time = 0.0
+            # calculate time executing activity
+            try:
+                now = os.clock_gettime(os.CLOCK_MONOTONIC)
+            except AttributeError:
+                now = os.times()[4]
+            elapsed_time = now - start
 
-        # make progress bar 
-        filled = int(bar_width * percentage)
-        bar = '█' * filled + ' ' * (bar_width - filled)
+            # calculate the speed and the remaining time for the activity
+            if elapsed_time > 0:
+                speed = i / elapsed_time
+                remaining_time = (total - i) / speed
+            else:
+                speed = 0.0
+                remaining_time = 0.0
 
-        elapsed_str = format_time(elapsed_time)
-        remaining_str = format_time(remaining_time)
-        speed_str = f'{speed:.2f}it/s'
-        
-        if speed > 99.95:  # Large speed -> integer
-            speed_str = f'{round(speed)}it/s'
-        elif speed > 0:
-            speed_str = f'{speed:.2f}it/s'
-        else:
-            speed_str = f'{speed:.0f}it/s'
+            # make progress bar
+            filled = int(bar_width * percentage)
+            bar = '█' * filled + ' ' * (bar_width - filled)
 
-        output = (f'\r{pct_display:3d}%|{bar}| {i}/{total} '
-                  f'[{elapsed_str}<{remaining_str}, {speed_str}]')
+            elapsed_str = format_time(elapsed_time)
+            remaining_str = format_time(remaining_time)
 
-        print(output, end='', flush=True)
+            if speed > 99.95:
+                speed_str = f'{round(speed)}it/s'
+            elif speed > 0:
+                speed_str = f'{speed:.2f}it/s'
+            else:
+                speed_str = f'{speed:.0f}it/s'
 
-        yield item
-    
-    print()
+            output = (f'\r{pct_display:3d}%|{bar}| {i}/{total} '
+                      f'[{elapsed_str}<{remaining_str}, {speed_str}]')
+
+            print(output, end='', flush=True)
+    finally:
+        print()
 
 
 def format_time(seconds):
