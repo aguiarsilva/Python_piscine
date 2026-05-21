@@ -10,8 +10,10 @@ family = [[1.80, 78.4],
 # print(slice_me(family, 0, 2))
 # print(slice_me(family, 1, -2))
 
+
 def print_separator():
     print("\n" + "="*60)
+
 
 print("="*60)
 print("Slice_me function tester")
@@ -32,7 +34,7 @@ print(slice_me(family, 1, -2))
 # Test case 3: Empty list (start == end)
 print_separator()
 print("Test 3: Empty slice (2, 2)")
-print ("-" * 40)
+print("-" * 40)
 print(slice_me(family, 2, 2))
 
 # Test case 4: Start beyond length
@@ -104,7 +106,7 @@ except Exception as e:
 print_separator()
 print("Test 12: Invalid matrix (rows of different lengths)")
 print("-" * 40)
-invalid_family = [[1.80, 78.4, 75],[2.15, 102.7],[1.88, 75.2]]
+invalid_family = [[1.80, 78.4, 75], [2.15, 102.7], [1.88, 75.2]]
 try:
     print(slice_me(invalid_family, 0, 2))
 except Exception as e:
@@ -125,6 +127,3 @@ large_family = [[i, i**2] for i in range(1, 101)]
 print(f"Created matrix with {len(large_family)} rows")
 result = slice_me(large_family, 10, 20)
 print(f"Sliced 10 rows: {len(result)} rows returned")
-
-
-
