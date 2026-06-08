@@ -42,9 +42,9 @@ def main():
     count_total = count_upper + count_lower + count_punctuation \
         + count_digits + count_spaces
 
-    print(f"The text contains {count_total} characters:\n{count_upper} upper \
-            letters\n{count_lower} lower letters\n{count_punctuation} \
-            punctuation marks\n{count_spaces} spaces\n{count_digits} digits")
+    print(f"The text contains {count_total} characters:\n{count_upper} upper "
+          f"letters\n{count_lower} lower letters\n{count_punctuation} "
+          f"punctuation marks\n{count_spaces} spaces\n{count_digits} digits")
 
 
 if __name__ == "__main__":
