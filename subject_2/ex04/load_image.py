@@ -18,7 +18,7 @@ def ft_load(path: str) -> np.array:
         raise AssertionError(f"Couldn't find the image at {path}")
 
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    
+
     if img.ndim == 2:
         img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
 

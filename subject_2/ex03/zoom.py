@@ -21,15 +21,16 @@ def zoom_image(image: np.ndarray, y_start: int, y_end: int, x_start: int,
     h, w = image.shape[:2]
     if not (0 <= y_start < y_end <= h) or not (0 <= x_start < x_end <= w):
         raise ValueError(f"Crop region out of bounds. Image size: ({h}, {w})")
-    
+
     cropped = image[y_start:y_end, x_start:x_end]
-    
+
     new_size = (int(cropped.shape[1] * scale_factor),
                 int(cropped.shape[0] * scale_factor))
 
     zoomed = cv2.resize(cropped, new_size, interpolation=cv2.INTER_LINEAR)
 
     return zoomed
+
 
 def add_axis_scale(image: np.ndarray, step: int = 100) -> np.ndarray:
     """
@@ -71,7 +72,7 @@ def main():
         if len(img.shape) == 3:
             print(f"Number of channels: {img.shape[2]} (RGB)")
         else:
-            print(f"Number of channels: 1 (Grayscale)")
+            print("Number of channels: 1 (Grayscale)")
 
         print("Original image data (first/last rows):")
         print(img)
@@ -107,6 +108,7 @@ def main():
         print(f"ValueError: {e}")
     except Exception as e:
         print(f"Error: {e}")
+
 
 if __name__ == "__main__":
     main()

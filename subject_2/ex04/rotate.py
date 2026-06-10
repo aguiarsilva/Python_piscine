@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 from load_image import ft_load
 
+
 def crop_image(image: np.ndarray, y_start: int, y_end: int,
                x_start: int, x_end: int) -> np.ndarray:
     """
@@ -36,7 +37,7 @@ def add_axis_scale(image: np.ndarray, step: int = 100) -> np.ndarray:
         text_color = (255, 255, 255)
         result = cv2.cvtColor(result, cv2.COLOR_GRAY2BR)
     else:
-        text_color = (255,255,255)
+        text_color = (255, 255, 255)
 
     for y in range(0, h, step):
         cv2.putText(result, str(y), (5, y),
@@ -72,7 +73,7 @@ def ft_transpose(image: np.ndarray) -> np.ndarray:
         for y in range(h):
             for x in range(w):
                 transposed[x, y] = image[y, x]
-    
+
     return transposed
 
 
@@ -87,7 +88,7 @@ def main():
         if len(img.shape) == 3:
             print(f"Number of channels {img.shape[2]} (RGB)")
         else:
-            print(f"Number of channels: 1 (Grayscale)")
+            print("Number of channels: 1 (Grayscale)")
 
         h, w = img.shape[:2]
         print(f"Image dimensions: {w} pixels (width) x {h} pixels (height)")
@@ -99,13 +100,15 @@ def main():
         x_end = (w // 2) + (crop_size // 2)
 
         cropped_img = crop_image(img, y_start, y_end, x_start, x_end)
-        print(f"Cropped image shape: {cropped_img.shape} or {cropped_img.shape[:2]}")
+        print(f"Cropped image shape: {cropped_img.shape} or "
+              f"{cropped_img.shape[:2]}")
         print("Cropped image data (first/last rows):")
         print(cropped_img)
 
         transposed_img = ft_transpose(cropped_img)
-        print(f"Transposed image shape: {transposed_img.shape} or {transposed_img.shape[:2]}")
-        print(f"Transposed image data (firts/last rows):")
+        print(f"Transposed image shape: {transposed_img.shape} or "
+              f"{transposed_img.shape[:2]}")
+        print("Transposed image data (firts/last rows):")
         print(transposed_img)
 
         img_with_scale = add_axis_scale(img)
@@ -117,14 +120,13 @@ def main():
         print("\nPress any key to close the image windows...")
         cv2.waitKey(0)
         cv2.destroyAllWindows()
-        
+
     except AssertionError as e:
         print(f"AssertionError: {e}")
     except ValueError as e:
         print(f"ValueError: {e}")
     except Exception as e:
         print(f"Error: {e}")
-              
 
 
 if __name__ == "__main__":
