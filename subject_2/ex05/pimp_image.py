@@ -1,5 +1,4 @@
 import numpy as np
-import cv2
 
 
 def ft_invert(array) -> np.ndarray:
@@ -9,7 +8,7 @@ def ft_invert(array) -> np.ndarray:
     result = 255 - array
     print(f"Shape after invert: {result.shape}")
     print(result)
-    
+
     return result
 
 
@@ -19,7 +18,6 @@ def ft_red(array) -> np.ndarray:
     """
     result = np.zeros(array.shape, dtype=array.dtype)
     result[:, :, 0] = array[:, :, 0]
-
 
     return result
 
