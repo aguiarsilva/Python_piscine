@@ -9,22 +9,27 @@ def main():
     It displays a graph image with the result on the screen.
     """
     try:
-        df = load("./life_expectancy_years.csv")
+        df = load("./population_total.csv")
         if df is None:
             return None
 
         countries_plot = ["Germany", "France"]
         plt.figure(figsize=(12, 6))
 
+        years = df.columns.astype(int)
+        mask = (years >= 1800) & (years <= 2050)
+        years_filtered = years[mask]
+
         for country in countries_plot:
             if country in df.index:
-                plt.plot(years, df.loc[country], label=country)
+                plt.plot(years_filtered, df.loc[country][mask], marker='.', linestyle='-',
+                         label=country)
 
         plt.xlabel("Year")
         plt.ylabel("Population")
         plt.title("Population Projections")
         plt.legend()
-        plt.grid(False)
+        plt.grid(True)
         plt.show()
 
         return df.shape
