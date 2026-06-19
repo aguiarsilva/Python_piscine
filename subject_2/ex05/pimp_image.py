@@ -17,7 +17,7 @@ def ft_red(array) -> np.ndarray:
     Function to apply a red filter to the image
     """
     result = np.zeros(array.shape, dtype=array.dtype)
-    result[:, :, 0] = array[:, :, 0]
+    result[:, :, 2] = array[:, :, 2]
 
     return result
 
@@ -37,7 +37,7 @@ def ft_blue(array) -> np.ndarray:
     Function to apply the blue filter to the image
     """
     result = np.zeros(array.shape, dtype=array.dtype)
-    result[:, :, 1] = array[:, :, 1]
+    result[:, :, 0] = array[:, :, 0]
 
     return result
 
