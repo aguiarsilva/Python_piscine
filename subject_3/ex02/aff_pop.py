@@ -1,5 +1,6 @@
 from load_csv import load
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 def main():
@@ -13,6 +14,10 @@ def main():
         if df is None:
             return None
 
+        for col in df.columns:
+            df[col] = pd.to_numeric(df[col].astype(str).str.replace('M', ''),
+                                    errors='coerce')
+
         countries_plot = ["Germany", "France"]
         plt.figure(figsize=(12, 6))
 
@@ -22,7 +27,9 @@ def main():
 
         for country in countries_plot:
             if country in df.index:
-                plt.plot(years_filtered, df.loc[country][mask], marker='.', linestyle='-',
+                values = df.loc[country][mask]
+                clean_mask = values.notna()
+                plt.plot(years_filtered, values[clean_mask], linestyle='-',
                          label=country)
 
         plt.xlabel("Year")
@@ -30,11 +37,20 @@ def main():
         plt.title("Population Projections")
         plt.legend()
         plt.grid(True)
+
+        def millions_formatter(x, pos):
+            return f'{int(x)}M'
+
+        plt.gca().yaxis.set_major_formatter(
+                plt.FuncFormatter(millions_formatter)
+                )
+
         plt.show()
 
         return df.shape
 
     except Exception as e:
+        print(f"Error: {e}")
         return None
 
 
