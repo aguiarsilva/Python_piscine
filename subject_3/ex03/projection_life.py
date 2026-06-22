@@ -16,7 +16,7 @@ def main():
                 "./income_per_person_gdppercapita_ppp_inflation_adjusted.csv"
                 )
 
-        if df is None || df2 is None:
+        if df is None or df2 is None:
             return None
 
         for col in df2.columns:
@@ -35,8 +35,18 @@ def main():
         combined_clean = combined_data.dropna()
 
         plt.figure(figsize=(12,6))
+        plt.scatter(combined_clean['Life Expectancy'], combined_clean['GDP'])
+        plt.xlabel("Life Expectancy (years)")
+        plt.ylabel("GDP per capita")
+        plt.title("Life Expectancy vs GDP per capita (1900)")
+        plt.grid(True, alpha=0.3)
+        plt.show()
 
-        return df.shape, df2.shape
+        return combined_clean.shape
+
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
 
 
 
