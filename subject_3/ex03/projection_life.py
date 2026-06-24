@@ -49,7 +49,6 @@ def main():
         plt.gca().xaxis.set_major_formatter(
                 plt.FuncFormatter(thousands_formatter)
                 )
-        plt.xscale('log')
         plt.show()
 
         return combined_clean.shape
