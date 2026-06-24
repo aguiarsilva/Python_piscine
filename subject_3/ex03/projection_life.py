@@ -1,5 +1,5 @@
 from load_csv import load
-from matplotlib.pyplot import plt
+import matplotlib.pyplot as plt
 import pandas as pd
 
 
@@ -11,35 +11,45 @@ def main():
     each country.
     """
     try:
-        df = load("./population_total.csv")
-        df2 = load(
+        life_df = load("./life_expectancy_years.csv")
+        gdp_df = load(
                 "./income_per_person_gdppercapita_ppp_inflation_adjusted.csv"
                 )
 
-        if df is None or df2 is None:
+        if life_df is None or gdp_df is None:
             return None
 
-        for col in df2.columns:
-            df2[col] = pd.to_numeric(df2[col].astype(str).str.replace('k', ''),
-                                     errors='coerce')
+        for col in gdp_df.columns:
+            gdp_df[col] = pd.to_numeric(
+                    gdp_df[col].astype(str).str.replace('k', ''),
+                    errors='coerce'
+            )
 
         year = "1900"
-        df_1900 = df[year]
-        df2_1900 = df2[year]
+        life_1900 = life_df[year]
+        gdp_1900 = gdp_df[year]
 
         combined_data = pd.DataFrame({
-            'Life Expectancy': df_1900,
-            'GDP': df2_1900
+            'Life Expectancy': life_1900,
+            'GDP': gdp_1900
             })
 
         combined_clean = combined_data.dropna()
 
-        plt.figure(figsize=(12,6))
-        plt.scatter(combined_clean['Life Expectancy'], combined_clean['GDP'])
-        plt.xlabel("Life Expectancy (years)")
-        plt.ylabel("GDP per capita")
+        plt.figure(figsize=(12, 6))
+        plt.scatter(combined_clean['GDP'], combined_clean['Life Expectancy'])
+        plt.ylabel("Life Expectancy (years)")
+        plt.xlabel("GDP per capita")
         plt.title("Life Expectancy vs GDP per capita (1900)")
         plt.grid(True, alpha=0.3)
+
+        def thousands_formatter(y, pos):
+            return f'{int(y/1000)}k'
+
+        plt.gca().xaxis.set_major_formatter(
+                plt.FuncFormatter(thousands_formatter)
+                )
+        plt.xscale('log')
         plt.show()
 
         return combined_clean.shape
@@ -47,7 +57,6 @@ def main():
     except Exception as e:
         print(f"Error: {e}")
         return None
-
 
 
 if __name__ == "__main__":
