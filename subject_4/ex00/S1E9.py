@@ -31,7 +31,7 @@ class Stark(Charachter):
         Concrete class constructor
         """
         super().__init__(first_name)
-        self.is_alive = True
+        self.is_alive = is_alive
         
 
     def die(self):
