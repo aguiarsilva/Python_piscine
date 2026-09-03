@@ -7,15 +7,14 @@ ft_dict = {"Hello": "titi!"}
 ft_list[1] = "World!"
 
 # modify tuple - immutable type in python
-del ft_tuple
-ft_tuple = ("Hello", "France!")
+ft_tuple = ft_tuple[:1] + ("Germany",)
 
 # modify set
 ft_set.remove("tutu!")
-ft_set.add("Paris!")
+ft_set.add("Berlin!")
 
 # modify dict
-ft_dict["Hello"] = "42Paris!"
+ft_dict["Hello"] = "42 Berlin!"
 
 print(ft_list)
 print(ft_tuple)
