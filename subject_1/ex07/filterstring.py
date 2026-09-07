@@ -1,5 +1,4 @@
 import sys
-from ft_filter import ft_filter
 
 
 def main():
@@ -22,8 +21,9 @@ def main():
 
     words = user_input.split()
 
-    result = ft_filter(lambda w: len(w) > n, [word for word in words])
-    print(list(result))
+    filter_words = lambda w: len(w) > n
+    result = [word for word in words if filter_words(word)]
+    print(result)
 
 
 if __name__ == "__main__":
