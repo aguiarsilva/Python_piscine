@@ -21,8 +21,7 @@ def main():
 
     words = user_input.split()
 
-    filter_words = lambda w: len(w) > n
-    result = [word for word in words if filter_words(word)]
+    result = [word for word in words if (lambda w: len(w) > n)(word)]
     print(result)
 
 

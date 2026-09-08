@@ -1,5 +1,5 @@
-from contextlib import redirect_stdout
-from io import StringIO
+# from contextlib import redirect_stdout
+# from io import StringIO
 from NULL_not_found import NULL_not_found
 
 
@@ -7,7 +7,7 @@ from NULL_not_found import NULL_not_found
 #     buffer = StringIO()
 #     with redirect_stdout(buffer):
 #         result = NULL_not_found(value)
-# 
+#
 #     output = buffer.getvalue()
 #     assert output == expected_output, (
 #         f"{label}: unexpected output\n"
