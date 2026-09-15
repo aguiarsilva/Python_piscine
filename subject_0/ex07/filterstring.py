@@ -10,14 +10,14 @@ def main():
             the program prints an AssertionError.
     """
     if len(sys.argv) != 3:
-        raise AssertionError("wrong number of arguments. Only 2 allowed.")
+        raise AssertionError("the arguments are bad")
 
     user_input = sys.argv[1]
 
     try:
         n = int(sys.argv[2])
     except ValueError:
-        raise AssertionError("wrong type of arguments.")
+        raise AssertionError("the arguments are bad")
 
     words = user_input.split()
 

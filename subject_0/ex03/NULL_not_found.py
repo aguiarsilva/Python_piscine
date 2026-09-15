@@ -1,4 +1,7 @@
-def NULL_not_found(object: any) -> int:
+from typing import Any
+
+
+def NULL_not_found(object: Any) -> int:
     """
     This function prints the type of null-like objects.
     Returns 0 on success, 1 on error.
@@ -16,12 +19,12 @@ def NULL_not_found(object: any) -> int:
         return 0
 
     if isinstance(object, str) and object == "":
-        print(f"Empty: {type(object)}")
+        print(f"Empty: {object} {type(object)}")
         return 0
 
     if type(object) is bool and object is False:
         print(f"Fake: {object} {type(object)}")
         return 0
 
-    print("Type not found")
+    print("Type not Found")
     return 1

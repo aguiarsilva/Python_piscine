@@ -12,7 +12,7 @@ def main():
     try:
         num = int(sys.argv[1])
     except ValueError:
-        raise AssertionError("argument is not integer")
+        raise AssertionError("argument is not an integer")
 
     if num % 2 == 0:
         print("I'm Even.")

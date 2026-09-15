@@ -18,7 +18,7 @@ def main():
         text = sys.argv[1]
 
     if len(sys.argv) > 2:
-        raise AssertionError("more than 1 argument provided. Max 1 argument")
+        raise AssertionError("more than one argument is provided")
 
     count_upper = 0
     count_lower = 0

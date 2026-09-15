@@ -6,8 +6,8 @@ ft_dict = {"Hello": "titi!"}
 # modify list
 ft_list[1] = "World!"
 
-# modify tuple - immutable type in python
-ft_tuple = ft_tuple[:1] + ("Germany",)
+# modify tuple
+ft_tuple = ft_tuple[:1] + ("Germany!",)
 
 # modify set
 ft_set.remove("tutu!")
