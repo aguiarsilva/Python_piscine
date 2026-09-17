@@ -24,6 +24,12 @@ def main():
 
 
 def text_to_morse(text):
+    """
+        Function to pass the text charatcters through the dict and
+        convert chars to morse code. 
+        Returns the text in morse code and strips evetual spaces at
+        the end.
+    """
     morse_dict = {
         'A': '.- ', 'B': '-... ', 'C': '-.-. ', 'D': '-.. ', 'E': '. ',
         'F': '..-. ', 'G': '--. ', 'H': '.... ', 'I': '.. ', 'J': '.--- ',
