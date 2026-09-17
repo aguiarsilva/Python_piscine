@@ -13,8 +13,6 @@ class King(Baratheon, Lannister):
         """
         super().__init__(first_name)
         self.is_alive = is_alive
-        self._eyes = None
-        self._hairs = None
 
     def set_eyes(self, eyes):
         """
