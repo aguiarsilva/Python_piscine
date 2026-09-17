@@ -38,7 +38,7 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
 
     Returns a list of booleans (True if the BMI is above)
     '''
-    if not isinstance(limit, int):
+    if not isinstance(limit, int) or isinstance(limit, bool):
         raise TypeError("The limit must be an int")
 
     return [b > limit for b in bmi]
