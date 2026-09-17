@@ -29,7 +29,7 @@ def zoom_image(image: np.ndarray, y_start: int, y_end: int, x_start: int,
 
     zoomed = cv2.resize(cropped, new_size, interpolation=cv2.INTER_LINEAR)
 
-    return zoomed
+    return cropped
 
 
 def add_axis_scale(image: np.ndarray, step: int = 100) -> np.ndarray:
