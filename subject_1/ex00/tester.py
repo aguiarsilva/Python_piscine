@@ -1,6 +1,6 @@
 from give_bmi import give_bmi, apply_limit
 
-#Tester from subject
+# Tester from subject
 height = [2.71, 1.15]
 weight = [165.3, 38.4]
 
@@ -8,7 +8,7 @@ bmi = give_bmi(height, weight)
 print(bmi, type(bmi))
 print(apply_limit(bmi, 26))
 
-
+#
 # def run_tests(name, func, *args, expect_exception=None):
 #     print(f"\n-- {name} --")
 #     try:
