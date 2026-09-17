@@ -2,8 +2,14 @@ def give_bmi(height: list[int | float],
              weight: list[int | float]
              ) -> list[int | float]:
     '''
-    Calculate the BMI for each pair of height and weight
-    Return the BMI as float or integer
+    Calculate the BMI (Body Mass Index) for each pair of height (m)
+    and weight (kg)
+
+    Takes 2 args:
+        height: list of heights in meters
+        weight: list of weights in kilograms
+
+    Returns a list of BMI values (weight/height^2)
     '''
     if not isinstance(height, list) or not isinstance(weight, list):
         raise TypeError("Height and Weight must be lists")
@@ -24,8 +30,13 @@ def give_bmi(height: list[int | float],
 
 def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
     '''
-    This function checks if the BMI is above or under the limit
-    Returns a boolean (True if the BMI is above)
+    This function checks if the BMI value exceeds the given limit.
+
+    Takes 2 args:
+        bmi: list of bmi values
+        limit: Threshold to compare against.
+
+    Returns a list of booleans (True if the BMI is above)
     '''
     if not isinstance(limit, int):
         raise TypeError("The limit must be an int")
