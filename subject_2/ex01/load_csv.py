@@ -11,9 +11,9 @@ def load(path: str) -> pd.DataFrame | None:
         df = pd.read_csv(path, index_col=0)
 
         dimensions = df.shape
-        print(f"Loading dataset of dimensions ({dimensions[0]} x {dimensions[1]})")
+        print(f"Loading dataset of dimensions ({dimensions[0]} x\
+            {dimensions[1]})")
         return df
 
     except Exception:
         return None
-        

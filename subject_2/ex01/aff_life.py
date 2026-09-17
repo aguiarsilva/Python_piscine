@@ -5,14 +5,14 @@ from load_csv import load
 def main():
     """
     Program that loads a dataset, print its dimensions and plot a country's
-    time series. 
+    time series.
     Returns the dimensions tuple on sucess or None on any error.
     """
     try:
         df = load("./life_expectancy_years.csv")
         if df is None:
             return None
-        
+
         country = "Germany"
         if country not in df.index:
             return None
@@ -30,7 +30,7 @@ def main():
 
         return df.shape
 
-    except Exception as e:
+    except Exception:
         return None
 
 
