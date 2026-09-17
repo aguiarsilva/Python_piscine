@@ -24,10 +24,10 @@ def zoom_image(image: np.ndarray, y_start: int, y_end: int, x_start: int,
 
     cropped = image[y_start:y_end, x_start:x_end]
 
-    new_size = (int(cropped.shape[1] * scale_factor),
-                int(cropped.shape[0] * scale_factor))
+#    new_size = (int(cropped.shape[1] * scale_factor),
+#                int(cropped.shape[0] * scale_factor))
 
-    zoomed = cv2.resize(cropped, new_size, interpolation=cv2.INTER_LINEAR)
+#    zoomed = cv2.resize(cropped, new_size, interpolation=cv2.INTER_LINEAR)
 
     return cropped
 
@@ -63,6 +63,25 @@ def add_axis_scale(image: np.ndarray, step: int = 100) -> np.ndarray:
 
 
 def main():
+    """
+    Main function to demonstrate the zooming functionality.
+
+    Loads an image, crops a specified region, and displays both the original
+    and zoomed images with axis scales.
+
+    This function:
+    1. Loads an image using the ft_load function.
+    2. Prints the original image shape and number of channels and dimensions.
+    3. Crops the specified region from the image.
+    4. Adds axis scales to both the original and zoomed images.
+    5. Displays the images using OpenCV and waits for a key press to close
+    the windows.
+
+    Raises:
+        AssertionError: If the image cannot be loaded or is invalid.
+        ValueError: If the crop region is out of bounds.
+        Exception: For any other unexpected errors during execution.
+    """
     try:
         # first load image with ft_load
         img = ft_load("animal.jpeg")
